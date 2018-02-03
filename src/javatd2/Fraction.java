@@ -38,17 +38,39 @@ public class Fraction {
         this(f.num,f.den);
     }
     
-    public Fraction reduire()
+    public int getNum()
     {
-        Utilitaire util = new Utilitaire();
-        int d = util.PGCD(this.num,this.den);
-        
-        this.num = this.num / d;
-        this.den = this.den / d;
-        
-        return this;
-    
+        return this.num;
     }
+    
+    public void setNum(int n)
+    {
+        this.num = n; 
+    }
+    
+    public void setFraction(int n, int d)
+    {
+        this.num = n;
+        this.den = d;
+    }
+    
+    public float getValeurFlottante()
+    {
+        float n = (float) this.num;
+        float d = (float) this.num;
+        
+        return n/d; 
+    }
+    
+    @Override
+    public String toString()
+    {
+        String n = Integer.toString(this.num);
+        String d = Integer.toString(this.den);
+        
+        return n + "/" + d;
+    }
+    
     
     public Fraction addition(Fraction fx)
     {
@@ -59,7 +81,6 @@ public class Fraction {
         resultat.den = this.den * fx.den;
         
         return resultat;
-        
     }
     
     public Fraction soustraction(Fraction fx)
@@ -92,6 +113,58 @@ public class Fraction {
         
         return resultat;
     }
+    
+    public Fraction puissance(int puissance)
+    {
+        //double p = (double) n;
+        int n = this.num;
+        int d = this.den;
+        
+        double numerateur = Math.pow(n,puissance);
+        double denominateur = Math.pow(d,puissance);
+        
+        int nu = (int) numerateur;
+        int de = (int) denominateur;
+        
+        Fraction f = new Fraction();
+        
+        f.num = nu;
+        f.den = de;
+        
+        return f;
+    }
+    
+    
+    public Fraction formeReduite()
+    {
+        Utilitaire util = new Utilitaire();
+        int d = util.PGCD(this.num,this.den);
+        
+        this.num = this.num / d;
+        this.den = this.den / d;
+        
+        return this;
+    }
+    
+    public String connaitreFormeReduite()
+    {
+        Fraction f = new Fraction();
+        
+        f = this.formeReduite();
+        
+        String s = f.toString();
+ 
+        return s;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
