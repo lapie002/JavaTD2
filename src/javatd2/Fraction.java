@@ -33,6 +33,34 @@ public class Fraction {
         this.q = part2;
     }
     
+    public Fraction(Fraction f)
+    {
+        this(f.p,f.q);
+    }
+    
+    public Fraction reduire()
+    {
+        Utilitaire util = new Utilitaire();
+        int d = util.PGCD(this.p,this.q);
+        
+        this.p = this.p / d;
+        this.q = this.q / d;
+        
+        return this;
+    
+    }
+    
+    public Fraction addition(Fraction fx)
+    {
+        Fraction resultat = new Fraction();
+     
+        resultat.p = (this.p * fx.q) + (fx.p * this.q);
+        resultat.q = this.q * fx.q;
+        
+        return resultat; 
+    }
+    
+    
     
     
 }
