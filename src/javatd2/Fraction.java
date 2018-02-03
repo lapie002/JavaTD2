@@ -11,15 +11,15 @@ package javatd2;
  */
 public class Fraction {
     
-    int p;
-    int q;
+    int num;
+    int den;
     
     public Fraction(){};
     
     public Fraction(int num,int dem)
     {
-        this.p = num;
-        this.q = dem;
+        this.num = num;
+        this.den = dem;
     };
     
     public Fraction(String f)
@@ -29,22 +29,22 @@ public class Fraction {
         int part1 = Integer.parseInt(parts[0]);
         int part2 = Integer.parseInt(parts[1]);
         
-        this.p = part1;
-        this.q = part2;
+        this.num = part1;
+        this.den = part2;
     }
     
     public Fraction(Fraction f)
     {
-        this(f.p,f.q);
+        this(f.num,f.den);
     }
     
     public Fraction reduire()
     {
         Utilitaire util = new Utilitaire();
-        int d = util.PGCD(this.p,this.q);
+        int d = util.PGCD(this.num,this.den);
         
-        this.p = this.p / d;
-        this.q = this.q / d;
+        this.num = this.num / d;
+        this.den = this.den / d;
         
         return this;
     
@@ -52,13 +52,48 @@ public class Fraction {
     
     public Fraction addition(Fraction fx)
     {
+        
         Fraction resultat = new Fraction();
      
-        resultat.p = (this.p * fx.q) + (fx.p * this.q);
-        resultat.q = this.q * fx.q;
+        resultat.num = (this.num * fx.den) + (fx.num * this.den);
+        resultat.den = this.den * fx.den;
+        
+        return resultat;
+        
+    }
+    
+    public Fraction soustraction(Fraction fx)
+    {
+        
+        Fraction resultat = new Fraction();
+     
+        resultat.num = (this.num * fx.den) - (fx.num * this.den);
+        resultat.den = this.den * fx.den;
         
         return resultat; 
     }
+    
+    public Fraction multiplication(Fraction fx)
+    {
+        Fraction resultat = new Fraction();
+        
+        resultat.num = this.num * fx.num;
+        resultat.den = this.den * fx.den; 
+        
+        return resultat;
+    }
+    
+    public Fraction division(Fraction fx)
+    {
+        Fraction resultat = new Fraction();
+        
+        resultat.num = this.num * fx.den;
+        resultat.den = this.den * fx.num; 
+        
+        return resultat;
+    }
+    
+    
     
     
     
