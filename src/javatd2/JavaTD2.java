@@ -15,7 +15,7 @@ public class JavaTD2 {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    //public static void main(String[] args) {
         // TODO code application logic here
         
         // Scanner entreeClavier = new Scanner(System.in);
@@ -95,6 +95,6 @@ public class JavaTD2 {
         
         
         
-    }
+    //}
     
 }
